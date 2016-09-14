@@ -107,10 +107,12 @@ Puzzle::Puzzle(GLFWwindow* windowPtr) {
     float tmpVec[] = {0.0f, 0.0f, 0.0f, 0.0f};
     float theta = acos(1.0f / 3.0f);
     float sinTheta = sin(theta);
-    float translationVector[] = {0.0f, 
-                                 -(float) sqrt(abs(6.0f * c * c - 9.0f * c * c * sinTheta * sinTheta)),
-                                 3.0f * c * sinTheta - 1.5f,
-                                 0.0f};
+    float translationVector[] = {
+    	0.0f, 
+        -(float) sqrt(abs(6.0f * c * c - 9.0f * c * c * sinTheta * sinTheta)),
+        3.0f * c * sinTheta - 1.5f,
+        0.0f
+    };
     
     for (uint i = 0; i < 1 * dim * numFacesOneSide * m_numFaceVertices; i += dim) { //TODO why is this m_numFaces here?
         m_faceCenters[i] = faceCentersBottom4[i];
@@ -121,7 +123,11 @@ Puzzle::Puzzle(GLFWwindow* windowPtr) {
         if (m_faceCenters[i + 3] == -1.0f)
             m_faceVertices[i + 1] = -m_faceVertices[i + 1];
     }
-    for (uint i = 1 * dim * numFacesOneSide * m_numFaceVertices; i < 2 * dim * numFacesOneSide * m_numFaceVertices; i += dim) {
+    for (
+    	uint i = 1 * dim * numFacesOneSide * m_numFaceVertices; 
+    	i < 2 * dim * numFacesOneSide * m_numFaceVertices; 
+    	i += di
+    ) {
         tmpVec[0] = faceCentersBottom4[i];
         tmpVec[1] = faceCentersBottom4[i + 1];
         tmpVec[2] = faceCentersBottom4[i + 2];
@@ -145,7 +151,11 @@ Puzzle::Puzzle(GLFWwindow* windowPtr) {
         m_faceVertices[i + 2] = tmpVec[2];
         m_faceVertices[i + 3] = m_faceCenters[i + 3];
     }
-    for (uint i = 2 * dim * numFacesOneSide * m_numFaceVertices; i < 3 * dim * numFacesOneSide * m_numFaceVertices; i += dim) {
+    for (
+    	uint i = 2 * dim * numFacesOneSide * m_numFaceVertices; 
+    	i < 3 * dim * numFacesOneSide * m_numFaceVertices; 
+    	i += dim
+    ) {
         tmpVec[0] = faceCentersBottom4[i];
         tmpVec[1] = faceCentersBottom4[i + 1];
         tmpVec[2] = faceCentersBottom4[i + 2];
@@ -175,7 +185,11 @@ Puzzle::Puzzle(GLFWwindow* windowPtr) {
         m_faceVertices[i + 2] = tmpVec[2];
         m_faceVertices[i + 3] = m_faceCenters[i + 3];
     }
-    for (uint i = 3 * dim * numFacesOneSide * m_numFaceVertices; i < dataLength; i += dim) {
+    for (
+    	uint i = 3 * dim * numFacesOneSide * m_numFaceVertices; 
+        i < dataLength; 
+        i += dim
+    ) {
         tmpVec[0] = faceCentersBottom4[i];
         tmpVec[1] = faceCentersBottom4[i + 1];
         tmpVec[2] = faceCentersBottom4[i + 2];
@@ -213,44 +227,151 @@ Puzzle::Puzzle(GLFWwindow* windowPtr) {
     
     GLubyte sideColors[] = {
         side0[0],side0[1],side0[2],side0[3],
-        side0[0],side0[1],side0[2],side0[3], side0[0],side0[1],side0[2],side0[3], side0[0],side0[1],side0[2],side0[3],
-        side0[0],side0[1],side0[2],side0[3], side0[0],side0[1],side0[2],side0[3], side0[0],side0[1],side0[2],side0[3], side0[0],side0[1],side0[2],side0[3], side0[0],side0[1],side0[2],side0[3], 
+        
+        side0[0],side0[1],side0[2],side0[3], 
+        side0[0],side0[1],side0[2],side0[3], 
         side0[0],side0[1],side0[2],side0[3],
-        side0[0],side0[1],side0[2],side0[3], side0[0],side0[1],side0[2],side0[3], side0[0],side0[1],side0[2],side0[3],
-        side0[0],side0[1],side0[2],side0[3], side0[0],side0[1],side0[2],side0[3], side0[0],side0[1],side0[2],side0[3], side0[0],side0[1],side0[2],side0[3], side0[0],side0[1],side0[2],side0[3], 
+        
+        side0[0],side0[1],side0[2],side0[3], 
+        side0[0],side0[1],side0[2],side0[3], 
+        side0[0],side0[1],side0[2],side0[3], 
+        side0[0],side0[1],side0[2],side0[3], 
+        side0[0],side0[1],side0[2],side0[3], 
+        
         side0[0],side0[1],side0[2],side0[3],
-        side0[0],side0[1],side0[2],side0[3], side0[0],side0[1],side0[2],side0[3], side0[0],side0[1],side0[2],side0[3],
-        side0[0],side0[1],side0[2],side0[3], side0[0],side0[1],side0[2],side0[3], side0[0],side0[1],side0[2],side0[3], side0[0],side0[1],side0[2],side0[3], side0[0],side0[1],side0[2],side0[3],  
+        
+        side0[0],side0[1],side0[2],side0[3], 
+        side0[0],side0[1],side0[2],side0[3], 
+        side0[0],side0[1],side0[2],side0[3],
+        
+        side0[0],side0[1],side0[2],side0[3], 
+        side0[0],side0[1],side0[2],side0[3], 
+        side0[0],side0[1],side0[2],side0[3], 
+        side0[0],side0[1],side0[2],side0[3], 
+        side0[0],side0[1],side0[2],side0[3], 
+        
+        side0[0],side0[1],side0[2],side0[3],
+        
+        side0[0],side0[1],side0[2],side0[3], 
+        side0[0],side0[1],side0[2],side0[3], 
+        side0[0],side0[1],side0[2],side0[3],
+        
+        side0[0],side0[1],side0[2],side0[3], 
+        side0[0],side0[1],side0[2],side0[3], 
+        side0[0],side0[1],side0[2],side0[3], 
+        side0[0],side0[1],side0[2],side0[3], 
+        side0[0],side0[1],side0[2],side0[3],  
+        
         
         side1[0],side1[1],side1[2],side1[3],
-        side1[0],side1[1],side1[2],side1[3], side1[0],side1[1],side1[2],side1[3], side1[0],side1[1],side1[2],side1[3],
-        side1[0],side1[1],side1[2],side1[3], side1[0],side1[1],side1[2],side1[3], side1[0],side1[1],side1[2],side1[3], side1[0],side1[1],side1[2],side1[3], side1[0],side1[1],side1[2],side1[3], 
+        
+        side1[0],side1[1],side1[2],side1[3], 
+        side1[0],side1[1],side1[2],side1[3], 
         side1[0],side1[1],side1[2],side1[3],
-        side1[0],side1[1],side1[2],side1[3], side1[0],side1[1],side1[2],side1[3], side1[0],side1[1],side1[2],side1[3],
-        side1[0],side1[1],side1[2],side1[3], side1[0],side1[1],side1[2],side1[3], side1[0],side1[1],side1[2],side1[3], side1[0],side1[1],side1[2],side1[3], side1[0],side1[1],side1[2],side1[3], 
+        
+        side1[0],side1[1],side1[2],side1[3], 
+        side1[0],side1[1],side1[2],side1[3], 
+        side1[0],side1[1],side1[2],side1[3], 
+        side1[0],side1[1],side1[2],side1[3], 
+        side1[0],side1[1],side1[2],side1[3], 
+        
         side1[0],side1[1],side1[2],side1[3],
-        side1[0],side1[1],side1[2],side1[3], side1[0],side1[1],side1[2],side1[3], side1[0],side1[1],side1[2],side1[3],
-        side1[0],side1[1],side1[2],side1[3], side1[0],side1[1],side1[2],side1[3], side1[0],side1[1],side1[2],side1[3], side1[0],side1[1],side1[2],side1[3], side1[0],side1[1],side1[2],side1[3], 
+        
+        side1[0],side1[1],side1[2],side1[3], 
+        side1[0],side1[1],side1[2],side1[3], 
+        side1[0],side1[1],side1[2],side1[3],
+        
+        side1[0],side1[1],side1[2],side1[3], 
+        side1[0],side1[1],side1[2],side1[3], 
+        side1[0],side1[1],side1[2],side1[3], 
+        side1[0],side1[1],side1[2],side1[3], 
+        side1[0],side1[1],side1[2],side1[3], 
+        
+        side1[0],side1[1],side1[2],side1[3],
+        
+        side1[0],side1[1],side1[2],side1[3], 
+        side1[0],side1[1],side1[2],side1[3], 
+        side1[0],side1[1],side1[2],side1[3],
+        
+        side1[0],side1[1],side1[2],side1[3], 
+        side1[0],side1[1],side1[2],side1[3], 
+        side1[0],side1[1],side1[2],side1[3], 
+        side1[0],side1[1],side1[2],side1[3], 
+        side1[0],side1[1],side1[2],side1[3], 
+        
         
         side2[0],side2[1],side2[2],side2[3],
-        side2[0],side2[1],side2[2],side2[3], side2[0],side2[1],side2[2],side2[3], side2[0],side2[1],side2[2],side2[3],
-        side2[0],side2[1],side2[2],side2[3], side2[0],side2[1],side2[2],side2[3], side2[0],side2[1],side2[2],side2[3], side2[0],side2[1],side2[2],side2[3], side2[0],side2[1],side2[2],side2[3],
+        
+        side2[0],side2[1],side2[2],side2[3], 
+        side2[0],side2[1],side2[2],side2[3], 
         side2[0],side2[1],side2[2],side2[3],
-        side2[0],side2[1],side2[2],side2[3], side2[0],side2[1],side2[2],side2[3], side2[0],side2[1],side2[2],side2[3],
-        side2[0],side2[1],side2[2],side2[3], side2[0],side2[1],side2[2],side2[3], side2[0],side2[1],side2[2],side2[3], side2[0],side2[1],side2[2],side2[3], side2[0],side2[1],side2[2],side2[3],
+        
+        side2[0],side2[1],side2[2],side2[3], 
+        side2[0],side2[1],side2[2],side2[3], 
+        side2[0],side2[1],side2[2],side2[3], 
+        side2[0],side2[1],side2[2],side2[3], 
         side2[0],side2[1],side2[2],side2[3],
-        side2[0],side2[1],side2[2],side2[3], side2[0],side2[1],side2[2],side2[3], side2[0],side2[1],side2[2],side2[3],
-        side2[0],side2[1],side2[2],side2[3], side2[0],side2[1],side2[2],side2[3], side2[0],side2[1],side2[2],side2[3], side2[0],side2[1],side2[2],side2[3], side2[0],side2[1],side2[2],side2[3],
+        
+        side2[0],side2[1],side2[2],side2[3],
+        
+        side2[0],side2[1],side2[2],side2[3], 
+        side2[0],side2[1],side2[2],side2[3], 
+        side2[0],side2[1],side2[2],side2[3],
+        
+        side2[0],side2[1],side2[2],side2[3], 
+        side2[0],side2[1],side2[2],side2[3], 
+        side2[0],side2[1],side2[2],side2[3], 
+        side2[0],side2[1],side2[2],side2[3], 
+        side2[0],side2[1],side2[2],side2[3],
+        
+        side2[0],side2[1],side2[2],side2[3],
+        
+        side2[0],side2[1],side2[2],side2[3], 
+        side2[0],side2[1],side2[2],side2[3], 
+        side2[0],side2[1],side2[2],side2[3],
+        
+        side2[0],side2[1],side2[2],side2[3], 
+        side2[0],side2[1],side2[2],side2[3], 
+        side2[0],side2[1],side2[2],side2[3], 
+        side2[0],side2[1],side2[2],side2[3], 
+        side2[0],side2[1],side2[2],side2[3],
+        
         
         side3[0],side3[1],side3[2],side3[3],
-        side3[0],side3[1],side3[2],side3[3], side3[0],side3[1],side3[2],side3[3], side3[0],side3[1],side3[2],side3[3],
-        side3[0],side3[1],side3[2],side3[3], side3[0],side3[1],side3[2],side3[3], side3[0],side3[1],side3[2],side3[3], side3[0],side3[1],side3[2],side3[3], side3[0],side3[1],side3[2],side3[3],
+        
+        side3[0],side3[1],side3[2],side3[3], 
+        side3[0],side3[1],side3[2],side3[3], 
         side3[0],side3[1],side3[2],side3[3],
-        side3[0],side3[1],side3[2],side3[3], side3[0],side3[1],side3[2],side3[3], side3[0],side3[1],side3[2],side3[3],
-        side3[0],side3[1],side3[2],side3[3], side3[0],side3[1],side3[2],side3[3], side3[0],side3[1],side3[2],side3[3], side3[0],side3[1],side3[2],side3[3], side3[0],side3[1],side3[2],side3[3],
+        
+        side3[0],side3[1],side3[2],side3[3], 
+        side3[0],side3[1],side3[2],side3[3], 
+        side3[0],side3[1],side3[2],side3[3], 
+        side3[0],side3[1],side3[2],side3[3], 
         side3[0],side3[1],side3[2],side3[3],
-        side3[0],side3[1],side3[2],side3[3], side3[0],side3[1],side3[2],side3[3], side3[0],side3[1],side3[2],side3[3],
-        side3[0],side3[1],side3[2],side3[3], side3[0],side3[1],side3[2],side3[3], side3[0],side3[1],side3[2],side3[3], side3[0],side3[1],side3[2],side3[3], side3[0],side3[1],side3[2],side3[3]
+        
+        side3[0],side3[1],side3[2],side3[3],
+        
+        side3[0],side3[1],side3[2],side3[3], 
+        side3[0],side3[1],side3[2],side3[3], 
+        side3[0],side3[1],side3[2],side3[3],
+        
+        side3[0],side3[1],side3[2],side3[3], 
+        side3[0],side3[1],side3[2],side3[3], 
+        side3[0],side3[1],side3[2],side3[3], 
+        side3[0],side3[1],side3[2],side3[3], 
+        side3[0],side3[1],side3[2],side3[3],
+        
+        side3[0],side3[1],side3[2],side3[3],
+        
+        side3[0],side3[1],side3[2],side3[3], 
+        side3[0],side3[1],side3[2],side3[3], 
+        side3[0],side3[1],side3[2],side3[3],
+        
+        side3[0],side3[1],side3[2],side3[3], 
+        side3[0],side3[1],side3[2],side3[3], 
+        side3[0],side3[1],side3[2],side3[3], 
+        side3[0],side3[1],side3[2],side3[3], 
+        side3[0],side3[1],side3[2],side3[3]
     };
     m_faceColors = new GLubyte[dataLength];
     for (uint i = 0; i < dataLength; i++)
