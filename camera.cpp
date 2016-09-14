@@ -63,8 +63,8 @@ void Camera::update() {
 	m_projectionMatrix = glm::perspective(FoV, 4.0f / 3.0f, 0.1f, 100.0f);
 	// Camera matrix
 	m_viewMatrix = glm::lookAt(m_position,              // Camera is here
-							   m_position + direction,  // and looks here : at the same position, plus "direction"
-							   up);                     // Head is up (set to 0,-1,0 to look upside-down)
+				   m_position + direction,  // and looks here : at the same position, plus "direction"
+				   up);                     // Head is up (set to 0,-1,0 to look upside-down)
 
 	m_MVP = m_projectionMatrix * m_viewMatrix * m_modelMatrix;
 
