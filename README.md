@@ -11,14 +11,20 @@
 
 ## Controls:
 
-Shuffle 'j'
+Shuffle: 'j'
 
-Blue transform 'a'
-Magenta transform 's'
-Orange transform 'd'
-Green transform 'g'
+Blue transform: 'a'
 
-Blue free transform 'q'
-Magenta free transform 'w'
+Magenta transform: 's'
+
+Orange transform: 'd'
+
+Green transform: 'g'
+
+Blue free transform: 'q'
+
+Magenta free transform: 'w'
+
 Orange free transform 'e'
+
 Green free transform 'r'
